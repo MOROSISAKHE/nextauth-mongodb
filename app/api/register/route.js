@@ -1,27 +1,25 @@
-import mongodbConnection from "@/lib/mongodb";
+import mongodbAuth from "@/lib/mongodbAuth";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
 
 export async function POST(req) {
   try {
     const { name, email, password } = await req.json();
-    await mongodbConnection();
-    const hashedPassword= await bcrypt.hash(password, 5)
-    await User.create({ name, email, password:hashedPassword});
-    console.log("User Created");
-
-    // console.log(name);
-    // console.log(email);
-    // console.log(password);
-    return NextResponse.json(
-      { message: "User Created!"},
-      { status: 200 }
-    );
+    await mongodbAuth();
+    const hashedPassword = await bcrypt.hash(password, 5);
+    const user = await User.findOne({ email });
+    if (!user) {
+      await User.create({ name, email, password: hashedPassword });
+      return NextResponse.json(
+        { message: "You succesfully created an Account" },
+        { status: 201 }
+      );
+    }
+    return NextResponse.json({ message: "User with this email already exists" }, {status: 409});
   } catch (error) {
-    console.log("Error Occure while creating the user");
     return NextResponse.json(
-      { message: "Error Occure while creating the user" },
+      { message: "Error Occured while creating the user" },
       { status: 500 }
     );
   }
