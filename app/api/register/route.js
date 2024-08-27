@@ -1,5 +1,5 @@
-import mongodbAuth from "@/lib/mongodbAuth";
-import User from "@/models/user";
+import mongodbAuth from "@/_lib/mongodbAuth";
+import User from "@/_models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
@@ -16,7 +16,10 @@ export async function POST(req) {
         { status: 201 }
       );
     }
-    return NextResponse.json({ message: "User with this email already exists" }, {status: 409});
+    return NextResponse.json(
+      { message: "User with this email already exists" },
+      { status: 409 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: "Error Occured while creating the user" },

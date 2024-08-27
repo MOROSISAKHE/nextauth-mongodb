@@ -12,8 +12,6 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const router = useRouter();
   const session=useSession();
-  console.log("the following is your session");
-  console.log({session});
   if(session.status==="authenticated"){
     router.push('/dashboard');
   }

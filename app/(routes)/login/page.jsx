@@ -1,4 +1,4 @@
-import LoginForm from "@/components/LoginForm";
+import LoginForm from "@/_components/LoginForm";
 import React from "react";
 export const metadata = {
   title: "login page",

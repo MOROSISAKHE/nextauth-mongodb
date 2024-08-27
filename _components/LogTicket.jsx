@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import TicketMessage from "./TicketSuccess";
-import TicketSuccess from "./TicketSuccess";
+import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 const LogTicket = () => {
-  const router=useRouter()
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
@@ -32,10 +31,13 @@ const LogTicket = () => {
     if (response.status == 200) {
       const form = e.target;
       form.reset();
-      return <TicketSuccess redirectUrl="/dashboard" message="Your Ticket is Submitted Successfully" delay="6000"/>
-
+      Swal.fire({
+        title: "Ticket submitted!",
+        text: "Your ticket was successfully submitted!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
     }
-    <TicketSuccess redirectUrl="/logTicket" message="Error Occured while creating ticket, Please try again" delay="6000"/>
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8 mt">
@@ -52,7 +54,7 @@ const LogTicket = () => {
               Title
             </label>
             <input
-            onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
               type="text"
               id="title"
               name="title"
@@ -68,7 +70,7 @@ const LogTicket = () => {
               Category
             </label>
             <select
-            onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
               id="category"
               name="category"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
@@ -91,7 +93,7 @@ const LogTicket = () => {
               Location
             </label>
             <input
-            onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) => setLocation(e.target.value)}
               type="text"
               id="location"
               name="location"
@@ -109,7 +111,7 @@ const LogTicket = () => {
               Description
             </label>
             <textarea
-            onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               id="description"
               name="description"
               placeholder="Enter the description"

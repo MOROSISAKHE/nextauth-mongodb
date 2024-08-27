@@ -1,13 +1,7 @@
 'use client'
 // pages/index.js
-import Head from 'next/head';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-
 export default function Home() {
-  const {data:session}=useSession();
-  console.log("The Session on the client side");
-  console.log({session});
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8">
 

@@ -1,5 +1,5 @@
-import mongodbAuth from "@/lib/mongodbAuth";
-import User from "@/models/user";
+import mongodbAuth from "@/_lib/mongodbAuth";
+import User from "@/_models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";

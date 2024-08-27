@@ -23,8 +23,6 @@ export default async function Tickets() {
   const uniqueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
-  console.log(uniqueCategories);
-  console.log("My other Session", session.user.role);
   // Checking Button State
   var isDisabled = "";
   if (session.user.role == "user") {
