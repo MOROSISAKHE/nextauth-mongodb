@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -65,6 +66,9 @@ export default function LoginForm() {
         </div>
         <div className="flex justify-center">
           <button className="flex bg-black rounded-lg px-2 py-2 text-yellow-50 mb-6 text-sm hover:bg-gray-800 items-center gap-1" onClick={()=>signIn("github", {callbackUrl: "/dashboard"})}><span className="size-"><FaGithub /></span> SignIn with GitHub</button>
+        </div>
+        <div className="flex justify-center">
+          <button className="flex bg-blue-500 rounded-lg px-2 py-2 text-yellow-50 mb-6 text-sm hover:bg-blue-800 items-center gap-1" onClick={()=>signIn("google", {callbackUrl: "/dashboard"})}><span className="size-"><FcGoogle /></span> SignIn with Google</button>
         </div>
         <div className="flex justify-end">
         <Link className="text-end text-sm" href="\register">

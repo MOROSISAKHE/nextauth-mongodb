@@ -1,5 +1,5 @@
-import mongodbAuth from "@/_lib/mongodbAuth";
-import User from "@/_models/user";
+import mongodbAuth from "@/app/_lib/mongodbAuth";
+import User from "@/app/_models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
@@ -14,7 +14,7 @@ export const authOptions = {
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     CredentialsProvider({
       name: "credentials",

@@ -1,5 +1,5 @@
-import mongodbAuth from "@/_lib/mongodbAuth";
-import Tickets from "@/_models/tickets";
+import mongodbAuth from "@/app/_lib/mongodbAuth";
+import Tickets from "@/app/_models/tickets";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {

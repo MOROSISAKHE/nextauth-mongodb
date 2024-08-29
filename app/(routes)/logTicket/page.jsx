@@ -1,4 +1,4 @@
-import LogTicket from "@/_components/LogTicket";
+import LogTicket from "@/app/_components/LogTicket";
 import React from "react";
 export const metadata = {
   title: "logging ticket",

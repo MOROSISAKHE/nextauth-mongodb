@@ -1,5 +1,5 @@
-import mongodbAuth from "@/_lib/mongodbAuth";
-import User from "@/_models/user";
+import mongodbAuth from "@/app/_lib/mongodbAuth";
+import User from "@/app/_models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
